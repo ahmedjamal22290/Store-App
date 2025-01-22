@@ -8,11 +8,17 @@ class GetProductsBycategoryService {
   String baseUrl = "https://fakestoreapi.com/products/category/";
   Future<List<productModel>> getProductsByCategory(String category) async {
     http.Response response = await http.get(Uri.parse('${baseUrl}${category}'));
-    List<dynamic> data = jsonDecode(response.body);
-    List<productModel> ListOfProducts = [];
-    for (int i = 0; i < data.length; i++) {
-      ListOfProducts.add(productModel.fromJson(data[i]));
+
+    if (response.statusCode == 200) {
+      List<dynamic> data = jsonDecode(response.body);
+      List<productModel> ListOfProducts = [];
+      for (int i = 0; i < data.length; i++) {
+        ListOfProducts.add(productModel.fromJson(data[i]));
+      }
+      return ListOfProducts;
+    } else {
+      throw Exception(
+          "there is a problem in status code ${response.statusCode}");
     }
-    return ListOfProducts;
   }
 }
