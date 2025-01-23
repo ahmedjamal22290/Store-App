@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:k/helper/api.dart';
+import 'package:k/models/productModel.dart';
 
 class UpdateProductService {
-  Future<dynamic> updateProductService(
+  Future<productModel> updateProductService(
       {required String id,
       required String title,
       required String price,
@@ -17,5 +20,7 @@ class UpdateProductService {
       "image": image,
       "category": category,
     });
+    Map<String, dynamic> data = jsonDecode(response.body);
+    return productModel.fromJson(data);
   }
 }
