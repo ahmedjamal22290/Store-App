@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Row(
+        title: const Row(
           children: [
             Icon(Icons.arrow_back),
             Spacer(),

@@ -1,8 +1,6 @@
-import 'dart:convert';
 
 import 'package:k/helper/api.dart';
 import 'package:k/models/productModel.dart';
-import 'package:http/http.dart' as http;
 
 class GetAllProducts {
   String baseUrl = "https://fakestoreapi.com/";
