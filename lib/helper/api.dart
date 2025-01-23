@@ -24,9 +24,12 @@ class Api {
     }
     http.Response response =
         await http.post(Uri.parse(url), body: body, headers: headers);
-
-    Map<String, dynamic> data = jsonDecode(response.body);
-    return data;
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = jsonDecode(response.body);
+      return data;
+    } else {
+      throw Exception("there is an error in status code");
+    }
   }
 }
 
