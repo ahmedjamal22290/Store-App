@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,19 +12,20 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: const Row(
-          children: [
-            Icon(Icons.arrow_back),
-            Spacer(),
-            Text(
-              "New Trend",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              FontAwesomeIcons.cartPlus,
+              color: Colors.black,
             ),
-            Spacer(),
-            Icon(Icons.shopping_cart),
-          ],
+          )
+        ],
+        title: Text(
+          "New Trend",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
