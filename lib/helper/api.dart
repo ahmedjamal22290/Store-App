@@ -24,6 +24,9 @@ class Api {
     }
     http.Response response =
         await http.post(Uri.parse(url), body: body, headers: headers);
+
+    Map<String, dynamic> data = jsonDecode(response.body);
+    return data;
   }
 }
 
