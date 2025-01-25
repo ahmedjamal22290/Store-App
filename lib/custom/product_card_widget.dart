@@ -4,9 +4,32 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:k/models/productModel.dart';
 
-class productCardWidget extends StatelessWidget {
+class productCardWidget extends StatefulWidget {
   productCardWidget({required this.productInfo});
   productModel productInfo;
+
+  @override
+  State<productCardWidget> createState() => _productCardWidgetState();
+}
+
+class _productCardWidgetState extends State<productCardWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Color?> _animatedColor;
+  bool isRed = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 150));
+    _animatedColor = ColorTween(
+      begin: Colors.grey,
+      end: Colors.red,
+    ).animate(_controller);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -33,7 +56,7 @@ class productCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    productInfo.title,
+                    widget.productInfo.title,
                     style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.bold,
@@ -47,15 +70,34 @@ class productCardWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        r'$' + '${productInfo.price}',
+                        r'$' + '${widget.productInfo.price}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                         ),
                       ),
-                      Icon(
-                        FontAwesomeIcons.solidHeart,
-                        color: Colors.red,
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            if (isRed) {
+                              _controller.reverse();
+                              isRed = false;
+                            } else {
+                              _controller.forward();
+                              isRed = true;
+                            }
+                          });
+                        },
+                        child: AnimatedBuilder(
+                          animation: _controller,
+                          builder: (context, child) {
+                            return Icon(
+                              FontAwesomeIcons.solidHeart,
+                              size: 25,
+                              color: _animatedColor.value,
+                            );
+                          },
+                        ),
                       )
                     ],
                   )
@@ -68,7 +110,7 @@ class productCardWidget extends StatelessWidget {
           left: 125,
           bottom: 85,
           child: Image.network(
-            productInfo.image,
+            widget.productInfo.image,
             height: 100,
           ),
         ),
