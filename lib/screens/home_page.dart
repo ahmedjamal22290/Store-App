@@ -30,6 +30,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Stack(
+          clipBehavior: Clip.none,
           children: [
             Container(
               height: 130,
@@ -52,7 +53,7 @@ class HomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "T Shirt ORG",
+                        "Red Shirt",
                         style: TextStyle(
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
@@ -83,9 +84,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Image.asset(
-              'assets/testShirt.png',
-              height: 100,
+            Positioned(
+              left: 125,
+              bottom: 85,
+              child: Image.asset(
+                'assets/testShirt.png',
+                height: 100,
+              ),
             ),
           ],
         ),
