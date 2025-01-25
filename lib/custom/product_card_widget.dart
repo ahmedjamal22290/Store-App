@@ -33,7 +33,7 @@ class _productCardWidgetState extends State<productCardWidget>
       begin: Colors.grey,
       end: Colors.red,
     ).animate(_controller);
-    _animationPostion = Tween<double>(begin: 85, end: 115).animate(
+    _animationPostion = Tween<double>(begin: 85, end: 105).animate(
         CurvedAnimation(parent: _PosController, curve: Curves.easeInOut));
 
     _PosController.addStatusListener((status) {
@@ -49,8 +49,8 @@ class _productCardWidgetState extends State<productCardWidget>
       clipBehavior: Clip.none,
       children: [
         Container(
-          height: 130,
-          width: 220,
+          // height: 130,
+          // width: 220,
           decoration: BoxDecoration(boxShadow: [
             BoxShadow(
                 color: Colors.grey.withOpacity(0.2),
@@ -125,7 +125,7 @@ class _productCardWidgetState extends State<productCardWidget>
           animation: _animationPostion,
           builder: (context, child) {
             return Positioned(
-              left: 125,
+              left: 115,
               bottom: _animationPostion.value,
               child: child!,
             );

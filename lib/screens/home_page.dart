@@ -30,18 +30,29 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-          child: productCardWidget(
-        productInfo: productModel(
-            category: "category",
-            description: 'description',
-            id: 7,
-            image:
-                'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
-            price: 223,
-            title: 'Mens Casual Premium Slim Fit T-Shirts ',
-            rating: ratingModel(count: 4, rate: 5)),
-      )),
+      body: Padding(
+        padding: const EdgeInsets.only(right: 10.0, left: 10, top: 85),
+        child: GridView.builder(
+            clipBehavior: Clip.none,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1.4,
+                mainAxisSpacing: 85,
+                crossAxisSpacing: 8),
+            itemBuilder: (context, index) {
+              return productCardWidget(
+                productInfo: productModel(
+                    category: "category",
+                    description: 'description',
+                    id: 7,
+                    image:
+                        'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
+                    price: 223,
+                    title: 'Mens Casual Premium Slim Fit T-Shirts ',
+                    rating: ratingModel(count: 4, rate: 5)),
+              );
+            }),
+      ),
     );
   }
 }
