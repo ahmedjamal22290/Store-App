@@ -33,8 +33,15 @@ class HomePage extends StatelessWidget {
         child: Container(
           height: 130,
           width: 220,
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                blurRadius: 40,
+                spreadRadius: -2,
+                offset: Offset(10, 10))
+          ]),
           child: Card(
-            elevation: 15,
+            elevation: 12,
             color: Colors.white,
             child: Padding(
               padding:
