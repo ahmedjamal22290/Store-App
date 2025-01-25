@@ -78,7 +78,7 @@ class _productCardWidgetState extends State<productCardWidget>
                     ),
                   ),
                   SizedBox(
-                    height: 12,
+                    height: 7,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
