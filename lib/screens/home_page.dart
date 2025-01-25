@@ -36,9 +36,10 @@ class HomePage extends StatelessWidget {
             category: "category",
             description: 'description',
             id: 7,
-            image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+            image:
+                'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
             price: 223,
-            title: 'BackPack',
+            title: 'Mens Casual Premium Slim Fit T-Shirts ',
             rating: ratingModel(count: 4, rate: 5)),
       )),
     );

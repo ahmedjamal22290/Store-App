@@ -13,9 +13,11 @@ class productCardWidget extends StatefulWidget {
 }
 
 class _productCardWidgetState extends State<productCardWidget>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _controller;
+  late AnimationController _PosController;
   late Animation<Color?> _animatedColor;
+  late Animation<double> _animationPostion;
   bool isRed = false;
 
   @override
@@ -23,11 +25,22 @@ class _productCardWidgetState extends State<productCardWidget>
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 150));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 350));
+    _PosController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 350));
+
     _animatedColor = ColorTween(
       begin: Colors.grey,
       end: Colors.red,
     ).animate(_controller);
+    _animationPostion = Tween<double>(begin: 85, end: 115).animate(
+        CurvedAnimation(parent: _PosController, curve: Curves.easeInOut));
+
+    _PosController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _PosController.reverse();
+      }
+    });
   }
 
   @override
@@ -57,6 +70,7 @@ class _productCardWidgetState extends State<productCardWidget>
                 children: [
                   Text(
                     widget.productInfo.title,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.bold,
@@ -83,6 +97,7 @@ class _productCardWidgetState extends State<productCardWidget>
                               _controller.reverse();
                               isRed = false;
                             } else {
+                              _PosController.forward();
                               _controller.forward();
                               isRed = true;
                             }
@@ -106,9 +121,15 @@ class _productCardWidgetState extends State<productCardWidget>
             ),
           ),
         ),
-        Positioned(
-          left: 125,
-          bottom: 85,
+        AnimatedBuilder(
+          animation: _animationPostion,
+          builder: (context, child) {
+            return Positioned(
+              left: 125,
+              bottom: _animationPostion.value,
+              child: child!,
+            );
+          },
           child: Image.network(
             widget.productInfo.image,
             height: 100,
