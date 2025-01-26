@@ -42,11 +42,12 @@ class UpdateProductPage extends StatelessWidget {
             customTextField(
               labelText: 'Product Name',
             ),
-            SizedBox(height: 22),
+            SizedBox(height: 60),
             Container(
               height: 50,
               width: 90,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
                 color: Color(0xff344E41),
               ),
               child: Center(
