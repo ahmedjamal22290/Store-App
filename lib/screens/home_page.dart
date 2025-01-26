@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:k/custom/product_card_widget.dart';
@@ -38,8 +40,10 @@ class HomePage extends StatelessWidget {
           future: GetAllProducts().getProducts(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              log('message');
+              List<productModel> products = snapshot.data!;
               return GridView.builder(
-                  itemCount: snapshot.data!.length,
+                  itemCount: products.length - 1,
                   clipBehavior: Clip.none,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -48,17 +52,15 @@ class HomePage extends StatelessWidget {
                       crossAxisSpacing: 8),
                   itemBuilder: (context, index) {
                     return productCardWidget(
-                      productInfo: productModel(
-                          category: "category",
-                          description: 'description',
-                          id: 7,
-                          image:
-                              'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
-                          price: 223,
-                          title: 'Mens Casual Premium Slim Fit T-Shirts ',
-                          rating: ratingModel(count: 4, rate: 5)),
+                      productInfo: products[index],
                     );
                   });
+            } else if (snapshot.hasError) {
+              log(snapshot.error.toString());
+              return Text(
+                'erorr ${snapshot.error.toString()}',
+                style: TextStyle(fontSize: 55),
+              );
             } else {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 300.0),

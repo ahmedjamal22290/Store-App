@@ -1,19 +1,14 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
-  Future<dynamic> get(String url) async {
-    log('before await of API');
+  Future<List<dynamic>> get(String url) async {
     http.Response response = await http.get(Uri.parse(url));
-    log('after await of API');
     if (response.statusCode == 200) {
-      log('status code of API 200');
       return jsonDecode(response.body);
     } else {
-      log('status code of API not 200');
       throw Exception(
           "there is a problem in status code ${response.statusCode}");
     }
