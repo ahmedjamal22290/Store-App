@@ -23,9 +23,10 @@ class UpdateProductPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-        child: Center(
-          child: ListView(
+        child: SingleChildScrollView(
+          child: Column(
             children: [
+              SizedBox(height: 115),
               customTextField(
                 onChange: (data) {
                   productName = data;
