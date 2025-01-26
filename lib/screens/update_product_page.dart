@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:k/custom/custom_textField.dart';
 
 class UpdateProductPage extends StatelessWidget {
-  const UpdateProductPage({super.key});
+  UpdateProductPage({super.key});
   static String id = "updateProductPage";
+  String? productName, description, image;
+  double? price;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,23 +27,31 @@ class UpdateProductPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             customTextField(
+              onChange: (data) {
+                productName = data;
+              },
               labelText: 'Product Name',
             ),
             SizedBox(height: 18),
             customTextField(
-              labelText: 'Descriptioon',
+              onChange: (data) {
+                description = data;
+              },
+              labelText: 'Description',
             ),
             SizedBox(height: 18),
             customTextField(
+              onChange: (data) {
+                price = data as double;
+              },
               labelText: 'Price',
             ),
             SizedBox(height: 18),
             customTextField(
+              onChange: (data) {
+                image = data;
+              },
               labelText: 'Image',
-            ),
-            SizedBox(height: 18),
-            customTextField(
-              labelText: 'Product Name',
             ),
             SizedBox(height: 80),
             GestureDetector(
