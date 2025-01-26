@@ -40,7 +40,6 @@ class HomePage extends StatelessWidget {
           future: GetAllProducts().getProducts(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              log('message');
               List<productModel> products = snapshot.data!;
               return GridView.builder(
                   itemCount: products.length - 1,

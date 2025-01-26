@@ -19,13 +19,7 @@ class Api {
       @required dynamic body,
       @required String? token}) async {
     Map<String, String> headers = {};
-    // {
-//       "title": "test",
-//       "price": "13.5",
-//       "description": "lorem ipsum set",
-//       "image": "https://i.pravatar.cc",
-//       "category": "electronic",
-//     }
+
     if (token != null) {
       headers.addAll({'Authorization': "Bearer $token"});
     }
