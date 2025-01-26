@@ -22,43 +22,48 @@ class UpdateProductPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             customTextField(
               labelText: 'Product Name',
             ),
-            SizedBox(height: 22),
+            SizedBox(height: 18),
             customTextField(
               labelText: 'Descriptioon',
             ),
-            SizedBox(height: 22),
+            SizedBox(height: 18),
             customTextField(
               labelText: 'Price',
             ),
-            SizedBox(height: 22),
+            SizedBox(height: 18),
             customTextField(
               labelText: 'Image',
             ),
-            SizedBox(height: 22),
+            SizedBox(height: 18),
             customTextField(
               labelText: 'Product Name',
             ),
-            SizedBox(height: 60),
-            Container(
-              height: 50,
-              width: 90,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Color(0xff344E41),
+            SizedBox(height: 80),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                height: 50,
+                width: 90,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Color(0xff344E41),
+                ),
+                child: Center(
+                    child: Text(
+                  'Update',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 21,
+                      fontWeight: FontWeight.bold),
+                )),
               ),
-              child: Center(
-                  child: Text(
-                'Update',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 21,
-                    fontWeight: FontWeight.bold),
-              )),
-            )
+            ),
+            SizedBox(height: 80),
           ],
         ),
       ),
