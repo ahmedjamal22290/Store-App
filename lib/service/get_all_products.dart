@@ -11,9 +11,7 @@ class GetAllProducts {
     List<productModel> ListOfProducts = [];
     for (int i = 0; i < data.length; i++) {
       ListOfProducts.add(productModel.fromJson(data[i]));
-      log(i.toString());
     }
-    log(ListOfProducts.length.toString());
     return ListOfProducts;
   }
 }
