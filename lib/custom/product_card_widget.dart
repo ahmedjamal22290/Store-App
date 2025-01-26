@@ -125,7 +125,7 @@ class _productCardWidgetState extends State<productCardWidget>
           animation: _animationPostion,
           builder: (context, child) {
             return Positioned(
-              left: 115,
+              left: 67,
               bottom: _animationPostion.value,
               child: child!,
             );
@@ -133,6 +133,7 @@ class _productCardWidgetState extends State<productCardWidget>
           child: Image.network(
             widget.productInfo.image,
             height: 100,
+            width: 120,
           ),
         ),
       ],
