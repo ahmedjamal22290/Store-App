@@ -39,9 +39,12 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-        child: SingleChildScrollView(
-          child: ModalProgressHUD(
-            inAsyncCall: isLoading,
+        child: ModalProgressHUD(
+          opacity: 0.1,
+          color: Colors.white38,
+          blur: 0.5,
+          inAsyncCall: isLoading,
+          child: SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(height: 115),

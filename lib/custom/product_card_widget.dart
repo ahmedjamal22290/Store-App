@@ -47,16 +47,11 @@ class _productCardWidgetState extends State<productCardWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, UpdateProductPage.id,
-            arguments: widget.productInfo);
-      },
+      onTap: () {},
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           Container(
-            // height: 130,
-            // width: 220,
             decoration: BoxDecoration(boxShadow: [
               BoxShadow(
                   color: Colors.grey.withOpacity(0.2),
@@ -142,6 +137,21 @@ class _productCardWidgetState extends State<productCardWidget>
               width: 120,
             ),
           ),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, UpdateProductPage.id,
+                  arguments: widget.productInfo);
+            },
+            child: Positioned(
+              left: 20,
+              top: 20,
+              child: Icon(
+                FontAwesomeIcons.pen,
+                size: 19,
+                color: Color.fromARGB(255, 49, 89, 69),
+              ),
+            ),
+          )
         ],
       ),
     );
