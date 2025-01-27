@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:k/screens/home_page.dart';
+import 'package:k/screens/product_description_page.dart';
 import 'package:k/screens/update_product_page.dart';
 
 void main() {
@@ -16,6 +17,7 @@ class StoreApp extends StatelessWidget {
       routes: {
         HomePage.id: (context) => const HomePage(),
         UpdateProductPage.id: (context) => UpdateProductPage(),
+        descPage.id: (context) => descPage(),
       },
       initialRoute: HomePage.id,
     );

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:k/models/productModel.dart';
+import 'package:k/screens/product_description_page.dart';
 import 'package:k/screens/update_product_page.dart';
 
 class productCardWidget extends StatefulWidget {
@@ -47,7 +48,10 @@ class _productCardWidgetState extends State<productCardWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, descPage.id,
+            arguments: widget.productInfo);
+      },
       child: Stack(
         clipBehavior: Clip.none,
         children: [
