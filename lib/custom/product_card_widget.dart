@@ -14,13 +14,14 @@ class productCardWidget extends StatefulWidget {
   State<productCardWidget> createState() => _productCardWidgetState();
 }
 
+bool isRed = false;
+
 class _productCardWidgetState extends State<productCardWidget>
     with TickerProviderStateMixin {
   late AnimationController _controller;
   late AnimationController _PosController;
   late Animation<Color?> _animatedColor;
   late Animation<double> _animationPostion;
-  bool isRed = false;
 
   @override
   void initState() {
@@ -89,8 +90,9 @@ class _productCardWidgetState extends State<productCardWidget>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          r'$' + '${widget.productInfo.price}',
+                          r'$' '${widget.productInfo.price}',
                           style: TextStyle(
+                            fontFamily: 'Oswald',
                             color: Colors.black,
                             fontSize: 18,
                           ),

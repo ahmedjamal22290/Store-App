@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:k/custom/product_card_widget.dart';
 import 'package:k/models/productModel.dart';
 
 class descPage extends StatefulWidget {
@@ -14,7 +15,7 @@ class _descPageState extends State<descPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation _animatedColor;
-  bool isRed = false;
+  // bool isRed = false;
   @override
   void initState() {
     _controller =
@@ -52,12 +53,13 @@ class _descPageState extends State<descPage>
             Row(
               children: [
                 Container(
-                  width: 320,
+                  width: 310,
                   child: Text(
                     overflow: TextOverflow.ellipsis,
                     maxLines: 4,
                     product.title,
                     style: TextStyle(
+                      fontFamily: 'Oswald',
                       fontSize: 21,
                       fontWeight: FontWeight.bold,
                     ),
@@ -92,6 +94,7 @@ class _descPageState extends State<descPage>
                     Text(
                       r'$' '${product.price}',
                       style: TextStyle(
+                        fontFamily: 'Oswald',
                         fontSize: 19,
                         fontWeight: FontWeight.bold,
                       ),
@@ -104,6 +107,7 @@ class _descPageState extends State<descPage>
             Text(
               product.description,
               style: TextStyle(
+                fontFamily: 'Inconsolata',
                 color: const Color(0xFF4D4D4D),
                 fontSize: 15,
               ),

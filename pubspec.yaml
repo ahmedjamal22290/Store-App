@@ -79,6 +79,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    - family: Inconsolata
+      fonts:
+        - asset: assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf
     - family: Oswald
       fonts:
         - asset: assets/fonts/Oswald-VariableFont_wght.ttf
