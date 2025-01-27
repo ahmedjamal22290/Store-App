@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:k/custom/custom_textField.dart';
+import 'package:k/models/productModel.dart';
+import 'package:k/service/update_product_service.dart';
 
 class UpdateProductPage extends StatelessWidget {
   UpdateProductPage({super.key});
@@ -8,6 +10,8 @@ class UpdateProductPage extends StatelessWidget {
   double? price;
   @override
   Widget build(BuildContext context) {
+    productModel product =
+        ModalRoute.of(context)!.settings.arguments as productModel;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -57,7 +61,15 @@ class UpdateProductPage extends StatelessWidget {
               ),
               SizedBox(height: 80),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  UpdateProductService().updateProductService(
+                      id: id,
+                      title: productName!,
+                      price: price.toString(),
+                      desc: description!,
+                      image: image!,
+                      category: producti);
+                },
                 child: Container(
                   height: 50,
                   width: 90,
