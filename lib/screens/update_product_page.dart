@@ -118,7 +118,7 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
 
   void updateMethod(productModel product) {
     UpdateProductService().updateProductService(
-        id: UpdateProductPage.id,
+        id: product.id.toString(),
         title: productName ?? product.title,
         price: price.toString(),
         desc: description ?? product.description,

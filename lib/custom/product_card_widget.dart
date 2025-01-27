@@ -137,18 +137,18 @@ class _productCardWidgetState extends State<productCardWidget>
               width: 120,
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, UpdateProductPage.id,
-                  arguments: widget.productInfo);
-            },
-            child: Positioned(
-              left: 20,
-              top: 20,
+          Positioned(
+            left: 20,
+            top: 20,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, UpdateProductPage.id,
+                    arguments: widget.productInfo);
+              },
               child: Icon(
                 FontAwesomeIcons.pen,
                 size: 19,
-                color: Color.fromARGB(255, 49, 89, 69),
+                color: Color(0xFF315945),
               ),
             ),
           )

@@ -12,7 +12,7 @@ class UpdateProductService {
       required String desc,
       required String image,
       required String category}) async {
-    http.Response response =
+    Map<String, dynamic> response =
         await Api().put(url: "https://fakestoreapi.com/products/$id", body: {
       "title": title,
       "price": price,
@@ -20,7 +20,7 @@ class UpdateProductService {
       "image": image,
       "category": category,
     });
-    Map<String, dynamic> data = jsonDecode(response.body);
-    return productModel.fromJson(data);
+    // Map<String, dynamic> data = jsonDecode(response.body);
+    return productModel.fromJson(response);
   }
 }
