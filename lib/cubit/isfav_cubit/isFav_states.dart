@@ -1,5 +1,13 @@
-class IsFavStates {}
+abstract class IsFavState {
+  const IsFavState();
+}
 
-class notFav extends IsFavStates {}
+class IsFavInitial extends IsFavState {
+  const IsFavInitial();
+}
 
-class IsFav extends IsFavStates {}
+class IsFavUpdated extends IsFavState {
+  final Map<String, bool> favorites;
+
+  const IsFavUpdated(this.favorites);
+}
