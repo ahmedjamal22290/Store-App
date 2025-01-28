@@ -14,14 +14,17 @@ class StoreApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        HomePage.id: (context) => const HomePage(),
-        UpdateProductPage.id: (context) => UpdateProductPage(),
-        descPage.id: (context) => descPage(),
-      },
-      initialRoute: HomePage.id,
+    return BlocProvider(
+      create: (context) => IsFavCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          HomePage.id: (context) => const HomePage(),
+          UpdateProductPage.id: (context) => UpdateProductPage(),
+          descPage.id: (context) => descPage(),
+        },
+        initialRoute: HomePage.id,
+      ),
     );
   }
 }

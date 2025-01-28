@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:k/cubit/isfav_cubit/isFav_states.dart';
 
 class IsFavCubit extends Cubit<IsFavState> {
   IsFavCubit() : super(IsFavInitial());
