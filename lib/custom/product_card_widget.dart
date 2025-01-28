@@ -58,7 +58,6 @@ class _productCardWidgetState extends State<productCardWidget>
             .isFavorite(widget.productInfo.id.toString());
         if (isFav) {
           _controller.forward();
-          _PosController.forward();
         } else {
           _controller.reverse();
         }
@@ -117,6 +116,9 @@ class _productCardWidgetState extends State<productCardWidget>
                                     .read<IsFavCubit>()
                                     .isFavorite(
                                         widget.productInfo.id.toString());
+                                if (!isFav) {
+                                  _PosController.forward();
+                                }
                                 context.read<IsFavCubit>().toggleFavorite(
                                     widget.productInfo.id.toString(), !isFav);
                               },
