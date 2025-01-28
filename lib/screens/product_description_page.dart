@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:k/cubit/isfav_cubit/isFav_states.dart';
+import 'package:k/cubit/isfav_cubit/isfav_cubit.dart';
 import 'package:k/custom/product_card_widget.dart';
 import 'package:k/models/productModel.dart';
 
@@ -29,6 +32,11 @@ class _descPageState extends State<descPage>
   Widget build(BuildContext context) {
     productModel product =
         ModalRoute.of(context)!.settings.arguments as productModel;
+    if (product.isFav) {
+      _controller.forward();
+    } else {
+      _controller.reverse();
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -38,7 +46,6 @@ class _descPageState extends State<descPage>
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 7.0),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
@@ -71,12 +78,12 @@ class _descPageState extends State<descPage>
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          if (isRed) {
+                          if (product.isFav) {
                             _controller.reverse();
-                            isRed = false;
+                            product.isFav = false;
                           } else {
                             _controller.forward();
-                            isRed = true;
+                            product.isFav = true;
                           }
                         });
                       },

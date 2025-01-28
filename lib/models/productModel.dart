@@ -3,7 +3,7 @@ class productModel {
   final String title, description, category, image;
   final String price;
   final ratingModel rating;
-
+  bool isFav = false;
   productModel({
     required this.category,
     required this.description,

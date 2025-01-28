@@ -1,7 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:k/cubit/isfav_cubit/isFav_states.dart';
+import 'package:k/cubit/isfav_cubit/isfav_cubit.dart';
 import 'package:k/models/productModel.dart';
 import 'package:k/screens/product_description_page.dart';
 import 'package:k/screens/update_product_page.dart';
@@ -48,6 +51,11 @@ class _productCardWidgetState extends State<productCardWidget>
 
   @override
   Widget build(BuildContext context) {
+    if (widget.productInfo.isFav) {
+      _controller.forward();
+    } else {
+      _controller.reverse();
+    }
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, descPage.id,
@@ -100,13 +108,13 @@ class _productCardWidgetState extends State<productCardWidget>
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              if (isRed) {
+                              if (widget.productInfo.isFav) {
                                 _controller.reverse();
-                                isRed = false;
+                                widget.productInfo.isFav = false;
                               } else {
                                 _PosController.forward();
                                 _controller.forward();
-                                isRed = true;
+                                widget.productInfo.isFav = true;
                               }
                             });
                           },

@@ -39,6 +39,7 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   loading_animation_widget: ^1.3.0
   modal_progress_hud_nsn: ^0.5.1
+  flutter_bloc: ^9.0.0
 
 dev_dependencies:
   flutter_test:
