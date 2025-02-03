@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:k/cubit/isfav_cubit/isfav_cubit.dart';
 import 'package:k/custom/product_card_widget.dart';
 import 'package:k/models/productModel.dart';
+import 'package:k/screens/cart_page.dart';
 import 'package:k/service/get_all_products.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -22,7 +23,9 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, CartPage.id);
+            },
             icon: Icon(
               FontAwesomeIcons.cartPlus,
               color: Colors.black,
