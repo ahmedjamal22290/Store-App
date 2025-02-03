@@ -21,6 +21,10 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
+        leading: GestureDetector(
+          onTap: () {},
+          child: Icon(FontAwesomeIcons.filter),
+        ),
         actions: [
           IconButton(
             onPressed: () {
