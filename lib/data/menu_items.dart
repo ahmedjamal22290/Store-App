@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:k/cubit/category_cubit/category_cubit.dart';
 import 'package:k/custom/product_card_widget.dart';
 import 'package:k/service/all_category.dart';
@@ -29,17 +30,35 @@ class MenuItems extends StatelessWidget {
                 },
                 child: Container(
                   height: 50,
-                  color: Colors.pink,
-                  child: Center(
-                    child: Text(
-                      categories[index],
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Oswald',
-                      ),
-                    ),
-                  ),
+                  color: categories[index] == 'Back'
+                      ? const Color.fromARGB(255, 207, 46, 164)
+                      : Colors.pink,
+                  child: categories[index] == 'Back'
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(FontAwesomeIcons.circleXmark),
+                            SizedBox(width: 15),
+                            Text(
+                              categories[index],
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Oswald',
+                              ),
+                            ),
+                          ],
+                        )
+                      : Center(
+                          child: Text(
+                            categories[index],
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Oswald',
+                            ),
+                          ),
+                        ),
                 ),
               );
             },
