@@ -18,27 +18,20 @@ class CartPage extends StatelessWidget {
         future: GetAllProducts().getProducts(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<productModel>? products = snapshot.data;
+            List<productModel>? products = context.read<IsFavCubit>().getFav();
+
             return Padding(
               padding: const EdgeInsets.only(top: 50.0),
               child: GridView.builder(
                   clipBehavior: Clip.none,
-                  itemCount: products!.length,
+                  itemCount: products.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: 1.4,
                       mainAxisSpacing: 85,
                       crossAxisSpacing: 8),
                   itemBuilder: (context, index) {
-                    if (context
-                        .read<IsFavCubit>()
-                        .isFavorite(products[index].id.toString())) {
-                      return productCardWidget(productInfo: products[index]);
-                    } else {
-                      return Container(
-                        height: 0,
-                      );
-                    }
+                    return productCardWidget(productInfo: products[index]);
                   }),
             );
           } else {

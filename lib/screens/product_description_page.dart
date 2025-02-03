@@ -86,7 +86,7 @@ class _descPageState extends State<descPage>
                                 .isFavorite(product.id.toString());
                             context
                                 .read<IsFavCubit>()
-                                .toggleFavorite(product.id.toString(), !isFav);
+                                .toggleFavorite(product, !isFav);
                           },
                           child: AnimatedBuilder(
                             animation: _controller,

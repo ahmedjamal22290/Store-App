@@ -119,8 +119,9 @@ class _productCardWidgetState extends State<productCardWidget>
                                 if (!isFav) {
                                   _PosController.forward();
                                 }
-                                context.read<IsFavCubit>().toggleFavorite(
-                                    widget.productInfo.id.toString(), !isFav);
+                                context
+                                    .read<IsFavCubit>()
+                                    .toggleFavorite(widget.productInfo, !isFav);
                               },
                               child: AnimatedBuilder(
                                 animation: _controller,
