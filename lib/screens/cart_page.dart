@@ -12,7 +12,18 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          'Your Cart',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            wordSpacing: 2,
+            letterSpacing: 1,
+            fontFamily: 'Oswald',
+          ),
+        ),
+        centerTitle: true,
+      ),
       backgroundColor: Colors.white,
       body: FutureBuilder(
         future: GetAllProducts().getProducts(),
