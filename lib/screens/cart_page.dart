@@ -12,26 +12,35 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       backgroundColor: Colors.white,
       body: FutureBuilder(
         future: GetAllProducts().getProducts(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<productModel>? products = snapshot.data;
-            return GridView.builder(
-                itemCount: products!.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1.4,
-                    mainAxisSpacing: 85,
-                    crossAxisSpacing: 8),
-                itemBuilder: (context, index) {
-                  if (context
-                      .read<IsFavCubit>()
-                      .isFavorite(products[index].id.toString())) {
-                    return productCardWidget(productInfo: products[index]);
-                  }
-                });
+            return Padding(
+              padding: const EdgeInsets.only(top: 50.0),
+              child: GridView.builder(
+                  clipBehavior: Clip.none,
+                  itemCount: products!.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1.4,
+                      mainAxisSpacing: 85,
+                      crossAxisSpacing: 8),
+                  itemBuilder: (context, index) {
+                    if (context
+                        .read<IsFavCubit>()
+                        .isFavorite(products[index].id.toString())) {
+                      return productCardWidget(productInfo: products[index]);
+                    } else {
+                      return Container(
+                        height: 0,
+                      );
+                    }
+                  }),
+            );
           } else {
             return Padding(
               padding: const EdgeInsets.only(bottom: 300.0),

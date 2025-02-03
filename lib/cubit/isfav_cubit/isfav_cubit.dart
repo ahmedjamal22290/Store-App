@@ -14,4 +14,8 @@ class IsFavCubit extends Cubit<IsFavState> {
   bool isFavorite(String productId) {
     return _favorites[productId] ?? false;
   }
+
+  Map<String, bool> getFav() {
+    return _favorites;
+  }
 }
