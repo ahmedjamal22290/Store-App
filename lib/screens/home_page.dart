@@ -5,10 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:k/cubit/isfav_cubit/isfav_cubit.dart';
 import 'package:k/custom/product_card_widget.dart';
+import 'package:k/data/menu_items.dart';
 import 'package:k/models/productModel.dart';
 import 'package:k/screens/cart_page.dart';
 import 'package:k/service/get_all_products.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:popover/popover.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,9 +23,19 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        leading: GestureDetector(
-          onTap: () {},
-          child: Icon(FontAwesomeIcons.filter),
+        leading: Builder(
+          builder: (context) => GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () => showPopover(
+              context: context,
+              bodyBuilder: (context) => MenuItems(),
+              width: 250,
+              height: 250,
+              backgroundColor: const Color(0x9AE91E62),
+              direction: PopoverDirection.bottom,
+            ),
+            child: Icon(FontAwesomeIcons.filter),
+          ),
         ),
         actions: [
           IconButton(
@@ -34,7 +46,7 @@ class HomePage extends StatelessWidget {
               FontAwesomeIcons.cartPlus,
               color: Colors.black,
             ),
-          )
+          ),
         ],
         title: Text(
           "New Trend",

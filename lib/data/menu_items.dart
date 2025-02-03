@@ -16,9 +16,16 @@ class MenuItems extends StatelessWidget {
             itemBuilder: (context, index) {
               return Container(
                 height: 50,
-                color: Colors.purple,
-                child: Text(
-                  categories[index],
+                color: Colors.pink,
+                child: Center(
+                  child: Text(
+                    categories[index],
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Oswald',
+                    ),
+                  ),
                 ),
               );
             },
