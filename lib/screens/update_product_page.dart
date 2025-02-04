@@ -96,7 +96,7 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                     width: 90,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
-                      color: Color(0xff344E41),
+                      color: Colors.pink,
                     ),
                     child: Center(
                         child: Text(
