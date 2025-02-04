@@ -16,7 +16,7 @@ class SearchSection extends StatefulWidget {
 
 class _SearchSectionState extends State<SearchSection> {
   TextEditingController _controller = TextEditingController();
-  late List<productModel> products;
+  List<productModel> products = [];
   @override
   void initState() {
     super.initState();
@@ -29,12 +29,24 @@ class _SearchSectionState extends State<SearchSection> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          customSearchBar(controller: _controller),
+          customSearchBar(
+            controller: _controller,
+            onChanged: (value) {
+              _controller.text = value;
+              log(value);
+              setState(() {});
+            },
+          ),
           findProduct(_controller.text) == null
               ? Container(
                   height: 5,
                 )
-              : productCardWidget(productInfo: findProduct(_controller.text)!),
+              : Container(
+                  margin: EdgeInsets.only(top: 50),
+                  height: 150,
+                  width: 300,
+                  child: productCardWidget(
+                      productInfo: findProduct(_controller.text)!)),
         ],
       ),
     );
@@ -42,10 +54,11 @@ class _SearchSectionState extends State<SearchSection> {
 
   Future<void> fetchProducts() async {
     products = await GetAllProducts().getProducts();
-    setState(() {}); // To refresh the UI after fetching products
+    setState(() {});
   }
 
   productModel? findProduct(String product) {
+    if (product == "") return null;
     for (int i = 0; i < products.length; i++) {
       if (products[i].title.toLowerCase().contains(product.toLowerCase())) {
         return products[i];
@@ -58,8 +71,8 @@ class _SearchSectionState extends State<SearchSection> {
 class customSearchBar extends StatelessWidget {
   final TextEditingController controller;
 
-  customSearchBar({required this.controller});
-
+  customSearchBar({required this.controller, required this.onChanged});
+  void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -67,9 +80,7 @@ class customSearchBar extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 5),
         child: TextFormField(
           controller: controller,
-          onChanged: (value) {
-            log(value);
-          },
+          onChanged: onChanged,
           decoration: InputDecoration(
             suffixIcon: Icon(FontAwesomeIcons.magnifyingGlass, size: 21),
             suffixIconColor: Colors.pink,
