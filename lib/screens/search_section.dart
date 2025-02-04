@@ -43,10 +43,11 @@ class _SearchSectionState extends State<SearchSection> {
                 )
               : Container(
                   margin: EdgeInsets.only(top: 50),
-                  height: 150,
+                  height: 350,
                   width: 300,
-                  child: productCardWidget(
-                      productInfo: findProduct(_controller.text)!)),
+                  child: ListView(
+                    children: findProduct(_controller.text)!,
+                  )),
         ],
       ),
     );
@@ -57,14 +58,19 @@ class _SearchSectionState extends State<SearchSection> {
     setState(() {});
   }
 
-  productModel? findProduct(String product) {
+  List<Widget>? findProduct(String product) {
     if (product == "") return null;
+    List<Widget>? productList = [];
     for (int i = 0; i < products.length; i++) {
       if (products[i].title.toLowerCase().contains(product.toLowerCase())) {
-        return products[i];
+        productList.add(Container(
+            margin: EdgeInsets.only(top: 50),
+            height: 150,
+            width: 300,
+            child: productCardWidget(productInfo: products[i])));
       }
     }
-    return null;
+    return productList.length == 0 ? null : productList;
   }
 }
 
