@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:k/cubit/category_cubit/category_cubit.dart';
-import 'package:k/custom/product_card_widget.dart';
 import 'package:k/service/all_category.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 

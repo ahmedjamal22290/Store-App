@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:k/custom/custom_textField.dart';
 import 'package:k/models/productModel.dart';
 import 'package:k/service/update_product_service.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class UpdateProductPage extends StatefulWidget {
