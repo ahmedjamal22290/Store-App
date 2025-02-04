@@ -17,6 +17,7 @@ class SearchSection extends StatefulWidget {
 class _SearchSectionState extends State<SearchSection> {
   TextEditingController _controller = TextEditingController();
   List<productModel> products = [];
+  bool isMoreThan2 = false;
   @override
   void initState() {
     super.initState();
@@ -47,7 +48,15 @@ class _SearchSectionState extends State<SearchSection> {
                   width: 300,
                   child: ListView(
                     children: findProduct(_controller.text)!,
-                  )),
+                  ),
+                ),
+          SizedBox(height: 15),
+          isMoreThan2
+              ? Icon(
+                  FontAwesomeIcons.circleArrowDown,
+                  color: Colors.pinkAccent,
+                )
+              : Container(),
         ],
       ),
     );
@@ -70,6 +79,12 @@ class _SearchSectionState extends State<SearchSection> {
             child: productCardWidget(productInfo: products[i])));
       }
     }
+    if (productList.length > 2) {
+      isMoreThan2 = true;
+    } else {
+      isMoreThan2 = false;
+    }
+    setState(() {});
     return productList.length == 0 ? null : productList;
   }
 }
