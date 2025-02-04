@@ -15,7 +15,7 @@ class SearchSection extends StatefulWidget {
 }
 
 class _SearchSectionState extends State<SearchSection> {
-  String Text = "";
+  TextEditingController _controller = TextEditingController();
   late List<productModel> products;
   @override
   void initState() {
@@ -29,12 +29,12 @@ class _SearchSectionState extends State<SearchSection> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          customSearchBar(text: Text),
-          findProduct(Text) == null
+          customSearchBar(controller: _controller),
+          findProduct(_controller.text) == null
               ? Container(
                   height: 5,
                 )
-              : productCardWidget(productInfo: findProduct(Text)!),
+              : productCardWidget(productInfo: findProduct(_controller.text)!),
         ],
       ),
     );
@@ -47,7 +47,7 @@ class _SearchSectionState extends State<SearchSection> {
 
   productModel? findProduct(String product) {
     for (int i = 0; i < products.length; i++) {
-      if (products[i].title == product) {
+      if (products[i].title.toLowerCase().contains(product.toLowerCase())) {
         return products[i];
       }
     }
@@ -55,53 +55,31 @@ class _SearchSectionState extends State<SearchSection> {
   }
 }
 
-class customSearchBar extends StatefulWidget {
-  customSearchBar({super.key, required this.text});
-  String text;
+class customSearchBar extends StatelessWidget {
+  final TextEditingController controller;
 
-  @override
-  State<customSearchBar> createState() => _customSearchBarState();
-}
+  customSearchBar({required this.controller});
 
-class _customSearchBarState extends State<customSearchBar> {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: EdgeInsets.only(left: 5, right: 5),
+        padding: EdgeInsets.symmetric(horizontal: 5),
         child: TextFormField(
-          validator: (value) {
-            if (value == null || value == "") {
-              return "The search section is Empty";
-            }
-          },
+          controller: controller,
           onChanged: (value) {
-            widget.text = value;
-            setState(() {});
-            log(widget.text);
+            log(value);
           },
           decoration: InputDecoration(
-            suffixIcon: Icon(
-              FontAwesomeIcons.magnifyingGlass,
-              size: 21,
-            ),
+            suffixIcon: Icon(FontAwesomeIcons.magnifyingGlass, size: 21),
             suffixIconColor: Colors.pink,
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                width: 2,
-                color: Colors.pink,
-              ),
-              borderRadius: BorderRadius.circular(
-                25,
-              ),
+              borderSide: BorderSide(width: 2, color: Colors.pink),
+              borderRadius: BorderRadius.circular(25),
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide(
-                width: 2.2,
-              ),
-              borderRadius: BorderRadius.circular(
-                9,
-              ),
+              borderSide: BorderSide(width: 2.2),
+              borderRadius: BorderRadius.circular(9),
             ),
           ),
         ),
