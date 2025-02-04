@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
           setState(() {});
         },
         selectedItemColor: Colors.pink,
-        items: const [
+        items: [
           BottomNavigationBarItem(
             label: 'Home',
             icon: Icon(FontAwesomeIcons.house),
@@ -50,7 +50,9 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             label: 'Cart',
-            icon: Icon(FontAwesomeIcons.cartShopping),
+            icon: Icon(_selectedIndex == 3
+                ? FontAwesomeIcons.solidHeart
+                : FontAwesomeIcons.heart),
           ),
         ],
       ),

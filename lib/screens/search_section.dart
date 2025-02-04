@@ -65,7 +65,9 @@ class _SearchSectionState extends State<SearchSection> {
 
   Future<void> fetchProducts() async {
     products = await GetAllProducts().getProducts();
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   List<Widget>? findProduct(String product) {
@@ -85,7 +87,15 @@ class _SearchSectionState extends State<SearchSection> {
     } else {
       isMoreThan2 = false;
     }
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
     return productList.length == 0 ? null : productList;
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
