@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(FontAwesomeIcons.circlePlus),
           ),
           BottomNavigationBarItem(
-            label: 'Cart',
+            label: 'Favorites',
             icon: Icon(_selectedIndex == 3
                 ? FontAwesomeIcons.solidHeart
                 : FontAwesomeIcons.heart),

@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
 import 'package:k/helper/api.dart';
 import 'package:k/models/productModel.dart';
 
@@ -16,6 +19,7 @@ class AddProduct {
       "image": image,
       "category": category,
     });
+    log('Success Post');
     return productModel.fromJson(data);
   }
 }
