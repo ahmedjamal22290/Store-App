@@ -10,6 +10,7 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends State<PostPage> {
+  String? title, price, desc, image, category;
   GlobalKey<FormState> formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,36 @@ class _PostPageState extends State<PostPage> {
           key: formKey,
           child: Column(
             children: [
-              customTextFormField(title: 'Product Name'),
+              customTextFormField(
+                title: 'Product Name',
+                onChanged: (value) {
+                  title = value;
+                },
+              ),
+              customTextFormField(
+                title: 'Price',
+                onChanged: (value) {
+                  price = value;
+                },
+              ),
+              customTextFormField(
+                title: 'Description',
+                onChanged: (value) {
+                  desc = value;
+                },
+              ),
+              customTextFormField(
+                title: 'Image',
+                onChanged: (value) {
+                  image = value;
+                },
+              ),
+              customTextFormField(
+                title: 'Category',
+                onChanged: (value) {
+                  category = value;
+                },
+              ),
             ],
           ),
         ),
@@ -30,11 +60,17 @@ class _PostPageState extends State<PostPage> {
 }
 
 class customTextFormField extends StatelessWidget {
-  const customTextFormField({super.key, required this.title});
-  String title;
+  const customTextFormField({
+    super.key,
+    required this.title,
+    required this.onChanged,
+  });
+  final String title;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       validator: (value) {
         if (value == null || value == "") {
           return "The field must be complate";
