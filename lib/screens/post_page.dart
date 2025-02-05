@@ -27,30 +27,62 @@ class _PostPageState extends State<PostPage> {
                   title = value;
                 },
               ),
+              SizedBox(height: 20),
               customTextFormField(
                 title: 'Price',
                 onChanged: (value) {
                   price = value;
                 },
               ),
+              SizedBox(height: 20),
               customTextFormField(
                 title: 'Description',
                 onChanged: (value) {
                   desc = value;
                 },
               ),
+              SizedBox(height: 20),
               customTextFormField(
                 title: 'Image',
                 onChanged: (value) {
                   image = value;
                 },
               ),
+              SizedBox(height: 20),
               customTextFormField(
                 title: 'Category',
                 onChanged: (value) {
                   category = value;
                 },
               ),
+              SizedBox(height: 40),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  height: 50,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(22),
+                    color: Colors.pinkAccent,
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Post Product',
+                    style: TextStyle(
+                      fontSize: 21,
+                      color: Colors.white,
+                      fontFamily: 'Oswald',
+                      shadows: [
+                        Shadow(
+                          blurRadius: 80,
+                        )
+                      ],
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+                ),
+              )
             ],
           ),
         ),
