@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:k/service/add_product.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key});
@@ -57,7 +60,25 @@ class _PostPageState extends State<PostPage> {
               ),
               SizedBox(height: 40),
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  if (formKey.currentState!.validate()) {
+                    try {
+                      await AddProduct().addProduct(
+                          title: title!,
+                          price: price!,
+                          desc: desc!,
+                          image: image!,
+                          category: category!);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('The product added successfuly '),
+                        ),
+                      );
+                    } catch (e) {
+                      throw Exception(e.toString());
+                    }
+                  }
+                },
                 child: Container(
                   height: 50,
                   width: 150,
@@ -105,7 +126,7 @@ class customTextFormField extends StatelessWidget {
       onChanged: onChanged,
       validator: (value) {
         if (value == null || value == "") {
-          return "The field must be complate";
+          return "Field is Empty";
         }
       },
       decoration: InputDecoration(

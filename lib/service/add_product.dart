@@ -19,6 +19,7 @@ class AddProduct {
       "image": image,
       "category": category,
     });
+    print(data);
     log('Success Post');
     return productModel.fromJson(data);
   }
