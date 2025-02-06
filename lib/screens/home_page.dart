@@ -62,10 +62,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         centerTitle: true,
         leading: Builder(
           builder: (context) => customMenuBotun(),
@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
             },
             icon: Icon(
               FontAwesomeIcons.cartPlus,
-              color: Colors.black,
+              // color: Colors.black,
             ),
           ),
         ],

@@ -12,7 +12,6 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: FutureBuilder(
         future: GetAllProducts().getProducts(),
         builder: (context, snapshot) {

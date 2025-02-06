@@ -77,7 +77,7 @@ class _productCardWidgetState extends State<productCardWidget>
                 ]),
                 child: Card(
                   elevation: 12,
-                  color: Colors.white,
+                  // color: Colors.white,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16.0, vertical: 10),
@@ -104,7 +104,7 @@ class _productCardWidgetState extends State<productCardWidget>
                               r'$' '${widget.productInfo.price}',
                               style: TextStyle(
                                 fontFamily: 'Oswald',
-                                color: Colors.black,
+                                // color: Colors.black,
                                 fontSize: 18,
                               ),
                             ),
