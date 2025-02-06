@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:k/cubit/category_cubit/category_cubit.dart';
+import 'package:k/cubit/mode_cubit/mode_cubit.dart';
 
 class customModeButon extends StatefulWidget {
   const customModeButon({
@@ -15,7 +18,6 @@ class _customModeButonState extends State<customModeButon>
   late AnimationController _controller;
   late Animation<Offset> _postionAnim;
   late Animation<double> _angleAnim;
-  bool isDark = false;
   @override
   void initState() {
     _controller = AnimationController(
@@ -42,17 +44,17 @@ class _customModeButonState extends State<customModeButon>
             offset: _postionAnim.value,
             child: GestureDetector(
               onTap: () {
-                if (isDark) {
+                if (context.read<ModeCubit>().modeIs()) {
                   _controller.reverse();
-                  isDark = false;
+                  BlocProvider.of<ModeCubit>(context).mode();
                 } else {
                   _controller.forward();
-                  isDark = true;
+                  BlocProvider.of<ModeCubit>(context).mode();
                 }
               },
               child: Container(
                 child: Icon(
-                  isDark
+                  context.read<ModeCubit>().modeIs()
                       ? FontAwesomeIcons.solidMoon
                       : FontAwesomeIcons.solidSun,
                   size: 30,
