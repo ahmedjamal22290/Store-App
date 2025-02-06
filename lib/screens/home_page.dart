@@ -5,6 +5,7 @@ import 'package:k/screens/cart_page.dart';
 import 'package:k/screens/home_section.dart';
 import 'package:k/screens/post_page.dart';
 import 'package:k/screens/search_section.dart';
+import 'package:k/screens/user_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
     SearchSection(),
     PostPage(),
     CartPage(),
+    UserPage(),
   ];
 
   int _selectedIndex = 0;
@@ -53,6 +55,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(_selectedIndex == 3
                 ? FontAwesomeIcons.solidHeart
                 : FontAwesomeIcons.heart),
+          ),
+          BottomNavigationBarItem(
+            label: 'Profile',
+            icon: Icon(FontAwesomeIcons.userLarge),
           ),
         ],
       ),
