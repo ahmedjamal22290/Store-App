@@ -41,7 +41,6 @@ class _descPageState extends State<descPage>
           _controller.reverse();
         }
         return Scaffold(
-          backgroundColor: Colors.white,
           appBar: AppBar(
             actionsIconTheme: IconThemeData(color: Colors.black54),
             backgroundColor: Colors.transparent,
@@ -51,10 +50,14 @@ class _descPageState extends State<descPage>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Image.network(
-                    product.image,
-                    scale: 5,
+                Container(
+                  width: double.infinity,
+                  color: Colors.white,
+                  child: Center(
+                    child: Image.network(
+                      product.image,
+                      scale: 5,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -125,5 +128,12 @@ class _descPageState extends State<descPage>
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
   }
 }

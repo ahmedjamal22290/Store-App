@@ -75,4 +75,11 @@ class _customModeButonState extends State<customModeButon>
       },
     );
   }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
+  }
 }

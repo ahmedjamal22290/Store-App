@@ -82,8 +82,8 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                     setState(() {});
                     try {
                       updateMethod(product);
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text('Success')));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Updated successfuly')));
                     } catch (e) {
                       log(e.toString());
                     }

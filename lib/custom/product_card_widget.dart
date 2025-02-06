@@ -175,4 +175,11 @@ class _productCardWidgetState extends State<productCardWidget>
       },
     );
   }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _PosController.dispose();
+    super.dispose();
+  }
 }
