@@ -1,22 +1,30 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-class customTextField extends StatelessWidget {
-  customTextField(
-      {super.key, required this.labelText, this.onChange, this.keyboardType});
-  final String labelText;
-  Function(String)? onChange;
-  TextInputType? keyboardType;
+class customTextFormField extends StatelessWidget {
+  const customTextFormField({
+    super.key,
+    required this.title,
+    required this.onChanged,
+  });
+  final String title;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onChanged: onChange,
-      keyboardType: keyboardType,
+      onChanged: onChanged,
+      validator: (value) {
+        if (value == null || value == "") {
+          return "Field is Empty";
+        }
+      },
       decoration: InputDecoration(
-        labelText: labelText,
+        label: Text(title),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(20),
           borderSide: const BorderSide(
-            color: Color(0xff344E41),
+            color: Colors.pink,
             width: 2,
           ),
         ),

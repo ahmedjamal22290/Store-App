@@ -1,8 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:k/custom/custom_text_fromField.dart';
 import 'package:k/service/add_product.dart';
 
 class PostPage extends StatefulWidget {
@@ -105,44 +103,6 @@ class _PostPageState extends State<PostPage> {
                 ),
               )
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class customTextFormField extends StatelessWidget {
-  const customTextFormField({
-    super.key,
-    required this.title,
-    required this.onChanged,
-  });
-  final String title;
-  final void Function(String)? onChanged;
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      onChanged: onChanged,
-      validator: (value) {
-        if (value == null || value == "") {
-          return "Field is Empty";
-        }
-      },
-      decoration: InputDecoration(
-        label: Text(title),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(
-            color: Colors.pink,
-            width: 2,
-          ),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: Color(0xff588157),
-            width: 1,
           ),
         ),
       ),

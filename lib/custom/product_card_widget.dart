@@ -73,7 +73,7 @@ class _productCardWidgetState extends State<productCardWidget>
                       color: Colors.grey.withOpacity(0.2),
                       blurRadius: 40,
                       spreadRadius: 0,
-                      offset: Offset(10, 10))
+                      offset: const Offset(10, 10))
                 ]),
                 child: Card(
                   elevation: 12,
@@ -88,7 +88,7 @@ class _productCardWidgetState extends State<productCardWidget>
                         Text(
                           widget.productInfo.title,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
@@ -102,7 +102,7 @@ class _productCardWidgetState extends State<productCardWidget>
                           children: [
                             Text(
                               r'$' '${widget.productInfo.price}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontFamily: 'Oswald',
                                 // color: Colors.black,
                                 fontSize: 18,
@@ -162,7 +162,7 @@ class _productCardWidgetState extends State<productCardWidget>
                     Navigator.pushNamed(context, UpdateProductPage.id,
                         arguments: widget.productInfo);
                   },
-                  child: Icon(
+                  child: const Icon(
                     FontAwesomeIcons.pen,
                     size: 19,
                     color: Color(0xFF315945),
