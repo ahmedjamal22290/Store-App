@@ -13,4 +13,8 @@ class ModeCubit extends Cubit<ModeCubitStates> {
       emit(darkModeState());
     }
   }
+
+  bool modeIs() {
+    return isDark;
+  }
 }
