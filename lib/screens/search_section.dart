@@ -96,6 +96,7 @@ class _SearchSectionState extends State<SearchSection> {
   @override
   void dispose() {
     _controller.dispose();
+
     super.dispose();
   }
 }
