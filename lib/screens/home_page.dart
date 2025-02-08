@@ -17,11 +17,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Widget> sections = [
-    home(),
+    const home(),
     SearchSection(),
-    PostPage(),
-    CartPage(),
-    UserPage(),
+    const PostPage(),
+    const CartPage(),
+    const UserPage(),
   ];
 
   int _selectedIndex = 0;
@@ -38,15 +38,15 @@ class _HomePageState extends State<HomePage> {
         },
         selectedItemColor: Colors.pink,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: 'Home',
             icon: Icon(FontAwesomeIcons.house),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: 'Search',
             icon: Icon(FontAwesomeIcons.magnifyingGlass),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: 'Post',
             icon: Icon(FontAwesomeIcons.circlePlus),
           ),
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                 ? FontAwesomeIcons.solidHeart
                 : FontAwesomeIcons.heart),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: 'Profile',
             icon: Icon(FontAwesomeIcons.userLarge),
           ),
@@ -75,13 +75,13 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.pushNamed(context, CartPage.id);
             },
-            icon: Icon(
+            icon: const Icon(
               FontAwesomeIcons.cartPlus,
               // color: Colors.black,
             ),
           ),
         ],
-        title: Text(
+        title: const Text(
           "New Trend",
           style: TextStyle(
             fontWeight: FontWeight.bold,

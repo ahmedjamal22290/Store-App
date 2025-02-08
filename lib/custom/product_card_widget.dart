@@ -28,10 +28,10 @@ class _productCardWidgetState extends State<productCardWidget>
   void initState() {
     super.initState();
 
-    _controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 350));
-    _PosController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 350));
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 350));
+    _PosController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 350));
 
     _animatedColor = ColorTween(
       begin: Colors.grey,
@@ -94,7 +94,7 @@ class _productCardWidgetState extends State<productCardWidget>
                             fontSize: 18,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 7,
                         ),
                         Row(

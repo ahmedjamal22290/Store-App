@@ -36,8 +36,8 @@ class StoreApp extends StatelessWidget {
                 routes: {
                   HomePage.id: (context) => const HomePage(),
                   UpdateProductPage.id: (context) => UpdateProductPage(),
-                  descPage.id: (context) => descPage(),
-                  CartPage.id: (context) => CartPage(),
+                  descPage.id: (context) => const descPage(),
+                  CartPage.id: (context) => const CartPage(),
                 },
                 initialRoute: HomePage.id,
               );
